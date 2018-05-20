@@ -4,53 +4,84 @@ class AddTodoForm extends Component{
     constructor(){
         super();
         this.state = {
-            'taskID' : '',
             'title' : '',
             'responsible' : '',
-            'descripton' : '',
+            'description' : '',
             'priority' : ''
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleInput(){
-        console.log("Writing")
+    //Detect if change value on inputs
+    handleInputChange(e) {
+        const {value, name} = e.target;
+        console.log(value, name);
+        this.setState({
+          [name]: value
+        });
+    }
+
+    //Send value
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.onAddTodo(this.state);
+        this.setState({
+          title: '',
+          responsible: '',
+          description: '',
+          priority: 'low'
+        });
     }
     render(){
         return(
             <div className="card">
-            <div className="card-header">
-                <h5>Add Task</h5>
-            </div>
-            <form className="card-body">
+                <form onSubmit={this.handleSubmit} className="card-body">
                 <div className="form-group">
-                    <input type="text" 
-                           onChange={ this.handleInput }
-                           className="form-control"
-                           id="inputTitle"
-                           placeholder="Title" />       
+                    <input
+                    type="text"
+                    name="title"
+                    className="form-control"
+                    value={this.state.title}
+                    onChange={this.handleInputChange}
+                    placeholder="Title"
+                    />
                 </div>
-                
                 <div className="form-group">
-                    <input type="text" 
-                           className="form-control"
-                           id="inputResponsible"
-                           placeholder="Responsible" />       
+                    <input
+                    type="text"
+                    name="responsible"
+                    className="form-control"
+                    value={this.state.responsible}
+                    onChange={this.handleInputChange}
+                    placeholder="Responsible"
+                    />
                 </div>
-                
                 <div className="form-group">
-                    <input type="text" 
-                           className="form-control"
-                           id="inputDescripton"
-                           placeholder="Description" />       
+                    <input
+                    type="text"
+                    name="description"
+                    className="form-control"
+                    value={this.state.description}
+                    onChange={this.handleInputChange}
+                    placeholder="Description"
+                    />
                 </div>
-                
                 <div className="form-group">
-                    <input type="text" 
-                           className="form-control"
-                           id="inputPriority"
-                           placeholder="Priority" />       
+                    <select
+                        name="priority"
+                        className="form-control"
+                        value={this.state.priority}
+                        onChange={this.handleInputChange}
+                    >
+                    <option>low</option>
+                    <option>medium</option>
+                    <option>high</option>
+                    </select>
                 </div>
-                <button type="submit" className="btn btn-primary my-1">Add</button>
-            </form>
+                <button type="submit" className="btn btn-primary">
+                    Save
+                </button>
+                </form>
             </div>
         )
     }

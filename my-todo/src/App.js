@@ -10,6 +10,12 @@ constructor(){
   this.state = {
     task
   }
+  this.handleAddTodo = this.handleAddTodo.bind(this);
+}
+handleAddTodo(todo){
+  this.setState({
+    task : [...this.state.task, todo]
+  })
 }
   render() {
    const td = this.state.task.map((task , i)=>{
@@ -24,7 +30,7 @@ constructor(){
             </div>
 
             <div className="card-body">
-              <p>{task.descripton}</p>
+              <p>{task.description}</p>
             </div>
             <div className="card-footer">
             <p className="card-text"><small className="text-muted"> created by: {task.responsible}</small></p>
@@ -34,6 +40,7 @@ constructor(){
       )
       
     })
+
     return (
       <div  className="App" >
         <Navbar title="my-Todo"/>
@@ -44,7 +51,7 @@ constructor(){
         
         
           <div className="row mt-2">
-          <div className="col-3"> <AddTodoForm/> </div>
+          <div className="col-3"> <AddTodoForm onAddTodo={this.handleAddTodo}/> </div>
              {td}
           </div>
         </div>  
