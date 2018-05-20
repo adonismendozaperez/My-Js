@@ -17,6 +17,13 @@ handleAddTodo(todo){
     task : [...this.state.task, todo]
   })
 }
+removeTask(index){
+this.setState({
+  task : this.state.task.filter((e,i)=>{
+    return i !== index
+  })
+})
+}
   render() {
    const td = this.state.task.map((task , i)=>{
       return (
@@ -33,7 +40,12 @@ handleAddTodo(todo){
               <p>{task.description}</p>
             </div>
             <div className="card-footer">
-            <p className="card-text"><small className="text-muted"> created by: {task.responsible}</small></p>
+              <p className="card-text">
+                <small className="text-muted"> created by: {task.responsible}</small>
+              </p>
+              <button className="btn btn-danger" onClick={ this.removeTask.bind(this, i) }>
+                Delete
+              </button>  
             </div>
           </div>
         </div>
@@ -43,13 +55,9 @@ handleAddTodo(todo){
 
     return (
       <div  className="App" >
-        <Navbar title="my-Todo"/>
-        
-        
 
+        <Navbar title="my-Todo"/>
         <div className="container">
-        
-        
           <div className="row mt-2">
           <div className="col-3"> <AddTodoForm onAddTodo={this.handleAddTodo}/> </div>
              {td}
