@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Random Quote Machine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="rqm.js"></script>
+    <style>
+        body{
+            background-color: rgba(0,0,0,.03);
+            font-family: 'Shadows Into Light', cursive;
+        }
+        .card-header:first-child{
+            background-color: #17A2B8;
+            color: white;
+        }
+    .container{
+        width: 500px !important;
+    }
+    .card{
+        border:none;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card mt-4">
+            <h5 class="card-header">Random Quote Machine</h5>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0 text-right">
+                    <p id="card-text"></p>
+                    <footer class="blockquote-footer"></footer>
+                </blockquote>
+            </div>
+            <div class="card-footer">
+                <a id="btTwiter" target="_blank">
+                    <button type="button" class="btn btn-outline-info"><i class="fab fa-twitter"></i></button>
+                </a>
+                <button type="button" class="btn btn-outline-info" id="btRandom"><i class="fas fa-redo-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
